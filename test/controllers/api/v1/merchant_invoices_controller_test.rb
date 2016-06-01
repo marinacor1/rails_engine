@@ -7,8 +7,8 @@ class Api::V1::MerchantInvoicesControllerTest < ActionController::TestCase
     parsed_json = JSON.parse(response.body)
 
     assert_response :success
-    assert parsed_json.last["name"], "Magic marbles"
-    refute_equal "Large shiny Tvs",  parsed_json.first["name"]
-    refute_equal "Clean tupperware containers", parsed_json.first["name"]
+    assert parsed_json.last["status"], "shipped"
+    assert parsed_json.last["customer_id"], "4"
+    refute_equal "2",  parsed_json.first["customer_id"]
   end
 end
