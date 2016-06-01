@@ -24,7 +24,7 @@ module Api
       private
 
       def search_params
-        params.permit(:invoice_id, :id, :credit_card_number, :credit_card_expiration_date, :date, :result, :created_at, :updated_at)
+        params.permit(:invoice_id, :id, :credit_card_number, :credit_card_expiration_date, :result, :created_at, :updated_at)
       end
 
     end

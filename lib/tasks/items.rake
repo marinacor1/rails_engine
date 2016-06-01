@@ -5,8 +5,7 @@ namespace :import do
   task items: :environment do
     filename= File.join Rails.root, "Db/data/items.csv"
     CSV.foreach(filename, headers: true) do |row|
-      info = row.to_hash
-      Item.create(name: info["name"], description: info["description"], unit_price: info["unit_price"], merchant_id: info["merchant_id"], created_at: info["created_at"], updated_at: info["updated_at"])
-    end
+      Item.create(row.to_hash)
   end
+end
 end
