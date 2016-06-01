@@ -21,6 +21,7 @@ Rails.application.routes.draw do
       resources :items, except: [:new, :edit] do
       end
 
+      get 'invoices/:id/transactions', to: "invoices#transactions"
       get 'invoices/find_all', to: "invoices#show"
       get 'invoices/find', to: "invoices#find"
       get 'invoices/random', to: "invoices#random"
