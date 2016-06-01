@@ -1,7 +1,7 @@
 require 'csv'
 
 namespace :import do
-  desc "Import merchants from csv"
+  desc "Import customers from csv"
   task customers: :environment do
     filename = File.join Rails.root, "db/data/customers.csv"
     CSV.foreach(filename, headers: true) do |row|
