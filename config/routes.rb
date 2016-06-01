@@ -12,6 +12,12 @@ Rails.application.routes.draw do
       get 'customers/random', to: "customers#random"
       resources :customers, except: [:new, :edit] do
       end
+
+      get 'items/find_all', to: "items#show"
+      get 'items/find', to: "items#find"
+      get 'items/random', to: "items#random"
+      resources :items, except: [:new, :edit] do
+      end
     end
   end
 end
