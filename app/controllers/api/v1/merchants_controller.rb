@@ -9,7 +9,11 @@ module Api
       end
 
       def show
-       respond_with Merchant.where(search_params)
+        respond_with Merchant.where(search_params)
+      end
+
+      def find
+        respond_with Merchant.find_by(search_params)
       end
 
       def random

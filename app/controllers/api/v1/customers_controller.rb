@@ -11,6 +11,10 @@ module Api
         respond_with Customer.where(customer_params)
       end
 
+      def find
+        respond_with Customer.find_by(customer_params)
+      end
+
       private
 
       def customer_params
