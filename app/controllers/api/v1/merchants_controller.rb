@@ -5,7 +5,7 @@ module Api
       respond_to :json
 
       def index
-        respond_with Merchant.all.as_json({only: [:id, :name, :created_at, :updated_at]})
+        respond_with Merchant.all
       end
 
       def show
