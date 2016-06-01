@@ -15,6 +15,11 @@ module Api
         respond_with Customer.find_by(customer_params)
       end
 
+      def random
+        random = rand(1..100)
+        respond_with Customer.find(random)
+      end
+
       private
 
       def customer_params
