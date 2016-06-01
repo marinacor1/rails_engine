@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: Tye dye sock
+  description: Brightly colored feet warmers
+  unit_price: 1234
+  merchant_id: 298486374
+
+two:
+  name: Magical marbles
+  description: Marbles that take you to magical places
+  unit_price: 14231
+  merchant_id: 298486374
+
+three:
+  name: Large shiny Tvs
+  description: You can watch things on them
+  unit_price: 232
+  merchant_id: 980190962
+
+four:
+  name: Clean tupperware containers
+  description: To store food in
+  unit_price: 2326776
+  merchant_id: 980190962
