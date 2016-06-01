@@ -9,7 +9,7 @@ module Api
       end
 
       def show
-        respond_with Item.where(search_params)
+        respond_with Item.where(item_params)
       end
 
       def find
