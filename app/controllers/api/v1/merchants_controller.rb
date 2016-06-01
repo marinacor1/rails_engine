@@ -12,6 +12,11 @@ module Api
        respond_with Merchant.where(search_params)
       end
 
+      def random
+        random = rand(1..100)
+        respond_with Merchant.find(random)
+      end
+
       private
 
       def search_params
