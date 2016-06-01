@@ -6,6 +6,8 @@ Rails.application.routes.draw do
       get '/merchants/random', to: "merchants#random"
       resources :merchants, except: [:new, :edit] do
       end
+      resources :customers, except: [:new, :edit] do
+      end
     end
   end
 end
