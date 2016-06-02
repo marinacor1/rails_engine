@@ -9,6 +9,17 @@ class Api::V1::CustomersControllerTest < ActionController::TestCase
     assert_equal 2, parsed_json.count
   end
 
+  test "it shows a single customer based on id" do
+    id = Customer.first.id
+    get :show, id: id, format: :json
+    parsed_json = JSON.parse(response.body)
+
+    assert_response :success
+    assert_equal "Lawrence", parsed_json["first_name"]
+    refute_equal "Marina", parsed_json["first_name"]
+    assert_equal Hash, parsed_json.class
+  end
+
   test "it shows the invoices for a customer" do
     id = Customer.first.id
     get :invoices, id: id, format: :json

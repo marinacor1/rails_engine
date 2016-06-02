@@ -8,7 +8,7 @@ module Api
       end
 
       def show
-        respond_with Customer.where(customer_params)
+        respond_with Customer.where(customer_params).first
       end
 
       def find
