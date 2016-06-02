@@ -49,4 +49,9 @@ class Api::V1::CustomersControllerTest < ActionController::TestCase
    assert_equal 2, parsed_json.count
   end
 
+  test "it finds the favorite merchant for a customer" do
+    id = Customer.last.id
+    get :
+  end
+
 end

@@ -50,4 +50,14 @@ class Api::V1::MerchantsControllerTest < ActionController::TestCase
 
    assert_equal 2, parsed_json.count
   end
+
+  test "it sorts merchants by revenue when quantity is given" do
+    skip
+    get :most_revenue, quantity: 2, format: :json
+    parsed_json = JSON.parse(response.body)
+
+    assert_equal 2, parsed_json.count
+    assert_equal "", parsed_json.first
+
+  end
 end

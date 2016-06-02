@@ -34,6 +34,12 @@ module Api
         respond_with customer.transactions
       end
 
+      def favorite_merchant
+        customer = Customer.find(params[:id])
+        fav_merchant = customer.transactions
+        binding.pry
+      end
+
       private
 
       def customer_params

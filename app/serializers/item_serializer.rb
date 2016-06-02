@@ -1,8 +1,7 @@
 class ItemSerializer < ActiveModel::Serializer
-  attributes :id, :name, :description, :unit_price
-  attribute :convert_to_dollars, key: :dollar
+  attributes :id, :name, :description, :unit_price, :merchant_id
 
-  def convert_to_dollars
+  def unit_price
     (object.unit_price.to_d)/100
   end
 end
