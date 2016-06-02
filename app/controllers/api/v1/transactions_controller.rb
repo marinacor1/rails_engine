@@ -9,7 +9,7 @@ module Api
       end
 
       def show
-        respond_with Transaction.where(search_params)
+        respond_with Transaction.where(search_params).first
       end
 
       def find
