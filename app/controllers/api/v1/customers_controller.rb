@@ -36,8 +36,12 @@ module Api
 
       def favorite_merchant
         customer = Customer.find(params[:id])
-        fav_merchant = customer.transactions
-        binding.pry
+        all_invoices = customer.invoices
+        merchant_group =all_invoices.group_by do |invoice|
+          invoice.merchant.name
+        end
+        sorted = merchant_group.sort_by {|merchant| merchant.count}.first.first
+        respond_with Merchant.find_by(name: sorted)
       end
 
       private
