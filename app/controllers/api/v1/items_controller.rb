@@ -9,7 +9,7 @@ module Api
       end
 
       def show
-        respond_with Item.where(item_params)
+        respond_with Item.where(item_params).first
       end
 
       def find
