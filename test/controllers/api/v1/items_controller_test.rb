@@ -30,7 +30,7 @@ class Api::V1::ItemsControllerTest < ActionController::TestCase
     assert_equal Hash, parsed_json.class
   end
 
-  test "it shows all instances of customer based on updated at" do
+  test "it shows all instances of items based on updated at" do
     updated_at = Item.first.updated_at
     get :find_all, updated_at: updated_at, format: :json
     parsed_json = JSON.parse(response.body)
@@ -38,7 +38,16 @@ class Api::V1::ItemsControllerTest < ActionController::TestCase
     assert_equal 3, parsed_json.group_by {|block| block["name"]}.keys.count
   end
 
-  test "it shows the invoice for an invoice item" do
+  test "it shows all instances of items based on id" do
+    id = Item.first.id
+    get :find_all, id: id, format: :json
+    parsed_json = JSON.parse(response.body)
+    assert_response :success
+    assert_equal Array, parsed_json.class
+    assert_equal id, parsed_json.first['id']
+  end
+
+  test "it shows the invoice item for an item" do
     id = Item.first.id
     get :invoice_items, id: id, format: :json
     parsed_json = JSON.parse(response.body)
