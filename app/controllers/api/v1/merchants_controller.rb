@@ -9,7 +9,7 @@ module Api
       end
 
       def show
-        respond_with Merchant.where(search_params).first
+        respond_with Merchant.find(params[:id])
       end
 
       def find

@@ -9,7 +9,7 @@ module Api
       end
 
       def show
-        respond_with InvoiceItem.where(search_params).first
+        respond_with InvoiceItem.find(params[:id])
       end
 
       def find

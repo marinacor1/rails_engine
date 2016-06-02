@@ -9,13 +9,24 @@ class Api::V1::ItemsControllerTest < ActionController::TestCase
     assert_equal 4, parsed_json.count
   end
 
-  test "it shows a single customer based on id" do
+  test "it shows a single item based on id" do
     id = Item.first.id
     get :show, id: id, format: :json
     parsed_json = JSON.parse(response.body)
 
     assert_response :success
     assert_equal id, parsed_json["id"]
+    assert_equal "Brightly colored feet warmers", parsed_json["description"]
+    assert_equal Hash, parsed_json.class
+  end
+
+  test "it find first item by unit price" do
+    price = Item.first.unit_price
+    get :find, unit_price: price, format: :json
+    parsed_json = JSON.parse(response.body)
+
+    assert_response :success
+    assert_equal "2.32", parsed_json["unit_price"]
     assert_equal Hash, parsed_json.class
   end
 
@@ -48,6 +59,7 @@ class Api::V1::ItemsControllerTest < ActionController::TestCase
   end
 
   test "it shows an items best day" do
+    skip
     id = Item.first.id
     get :best_day, id: id, format: :json
     parsed_json = JSON.parse(response.body)

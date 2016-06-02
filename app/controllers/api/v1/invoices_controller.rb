@@ -9,11 +9,11 @@ module Api
       end
 
       def show
-        respond_with Invoice.where(search_params).first
+        respond_with Invoice.find(params[:id])
       end
 
       def find
-        respond_with Invoice.find_by(search_params)
+        respond_with Invoice.where(search_params).first
       end
 
       def find_all
