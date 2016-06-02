@@ -25,6 +25,11 @@ module Api
         respond_with Merchant.find(random)
       end
 
+      def favorite_customer
+        merchant = Merchant.find(params[:id])
+        respond_with merchant.favorite_customer
+      end
+
       def most_revenue
         quantity = params[:quantity]
         Merchant.joins(:invoice)

@@ -12,6 +12,10 @@ module Api
         respond_with Transaction.where(search_params).first
       end
 
+      def find_all
+        respond_with Transaction.where(search_params)
+      end
+
       def find
         respond_with Transaction.find_by(search_params)
       end

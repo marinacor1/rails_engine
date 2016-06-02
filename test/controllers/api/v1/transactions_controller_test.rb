@@ -19,6 +19,15 @@ class Api::V1::TransactionsControllerTest < ActionController::TestCase
     assert_equal Hash, parsed_json.class
   end
 
+  test "it can show all instances of transaction by result" do
+    get :find_all, result: "shipped", format: :json
+    parsed_json = JSON.parse(response.body)
+
+    assert_response :success
+    assert_equal 2, parsed_json.count
+    assert_equal array, parsed_json.class
+  end
+
   test "it shows the invoice for a transaction" do
     id = Transaction.first.id
     get :invoice, id: id, format: :json
