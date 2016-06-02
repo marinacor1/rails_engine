@@ -4,12 +4,11 @@ class Customer < ActiveRecord::Base
   has_many :merchants, through: :invoices
 
   def favorite_merchant
-    id = Item.first.id
-    get :merchant, id: id, format: :json
-    parsed_json = JSON.parse(response.body)
-
-    assert_response :success
-    assert_equal "Mr.Merchant", parsed_json["name"]
-
+    merchants.select("merchants.*, count(invoices.merchant_id) AS invoice_count")
+    .joins(invoices: :transactions)
+             .merge(Transaction.successful)
+             .group("merchants.id")
+             .order("invoice_count DESC")
+             .first
   end
 end
