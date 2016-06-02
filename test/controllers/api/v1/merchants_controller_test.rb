@@ -20,11 +20,11 @@ class Api::V1::MerchantsControllerTest < ActionController::TestCase
   end
 
   test "it finds all possible matches in a query" do
-   name = Merchant.last.name
-   get :find_all, name: name, format: :json
+   created_at = Merchant.last.created_at
+   get :find_all, created_at: created_at, format: :json
    parsed_json = JSON.parse(response.body)
 
-   assert_equal 2, parsed_json.count
+   assert_equal "Mrs.Merchant", parsed_json["name"]
   end
 
 end
