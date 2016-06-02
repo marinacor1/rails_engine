@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       get 'customers/find', to: "customers#find"
       get 'customers/random', to: "customers#random"
       get 'customers/:id/invoices', to: "customers#invoices"
+      get 'customers/:id/transactions', to: "customers#transactions"
       resources :customers, except: [:new, :edit] do
       end
 
