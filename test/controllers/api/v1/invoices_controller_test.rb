@@ -1,6 +1,24 @@
 require 'test_helper'
 
 class Api::V1::InvoicesControllerTest < ActionController::TestCase
+  test "it shows all invoices" do
+    get :index, format: :json
+    parsed_json = JSON.parse(response.body)
+
+    assert_response :success
+    assert_equal 4, parsed_json.count
+  end
+
+  test "it shows a single invoice based on id" do
+    id = Invoice.first.id
+    get :show, id: id, format: :json
+    parsed_json = JSON.parse(response.body)
+
+    assert_response :success
+    assert_equal id, parsed_json["id"]
+    assert_equal Hash, parsed_json.class
+  end
+
   test "it shows all invoice transactions" do
     id = Invoice.first.id
     get :transactions, id: id, format: :json
