@@ -27,4 +27,11 @@ class Api::V1::MerchantsControllerTest < ActionController::TestCase
    assert_equal "Mrs.Merchant", parsed_json["name"]
   end
 
+  test "it finds all possible merchant matches in a updated at query" do
+   updated_at = Merchant.last.updated_at
+   get :find_all, updated_at: updated_at, format: :json
+   parsed_json = JSON.parse(response.body)
+
+   assert_equal 2, parsed_json.count
+  end
 end
