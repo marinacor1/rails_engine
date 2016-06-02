@@ -24,6 +24,7 @@ class Api::V1::MerchantsControllerTest < ActionController::TestCase
    get :find, created_at: created_at, format: :json
    parsed_json = JSON.parse(response.body)
    assert_equal "Mr.Merchant", parsed_json["name"]
+   assert_equal 2, parsed_json.count
   end
 
   test "it finds all possible merchant matches in a query" do
