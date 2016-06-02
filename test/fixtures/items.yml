@@ -5,21 +5,25 @@ one:
   description: Brightly colored feet warmers
   unit_price: 1234
   merchant_id: 298486374
+  updated_at: 2016-06-01 23:32:34 -0600
 
 two:
   name: Magical marbles
   description: Marbles that take you to magical places
   unit_price: 14231
   merchant_id: 298486374
+  updated_at: 2016-06-01 23:32:34 -0600
 
 three:
   name: Large shiny Tvs
   description: You can watch things on them
   unit_price: 232
   merchant_id: 980190962
+  updated_at: 2016-06-01 23:32:34 -0600
 
 four:
   name: Clean tupperware containers
   description: To store food in
   unit_price: 2326776
   merchant_id: 980190962
+  updated_at: 2015-07-01 23:32:54 -0600

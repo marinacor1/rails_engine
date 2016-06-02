@@ -13,27 +13,29 @@ Rails.application.routes.draw do
       get 'customers/find_all', to: "customers#find_all"
       get 'customers/find', to: "customers#find"
       get 'customers/random', to: "customers#random"
+      get 'customers/:id', to: "customers#show"
       get 'customers/:id/invoices', to: "customers#invoices"
       get 'customers/:id/transactions', to: "customers#transactions"
-      resources :customers, except: [:new, :edit] do
+      resources :customers, only: [:index] do
       end
 
-      get 'items/find_all', to: "items#show"
+      get 'items/find_all', to: "items#find_all"
       get 'items/find', to: "items#find"
       get 'items/random', to: "items#random"
+      get 'items/:id', to: "items#show"
       get 'items/:id/invoice_items', to: "items#invoice_items"
       get 'items/:id/merchant', to: "items#merchant"
-      resources :items, except: [:new, :edit] do
+      resources :items, only: [:index] do
       end
 
+      get 'invoices/find_all', to: "invoices#show"
+      get 'invoices/find', to: "invoices#find"
+      get 'invoices/random', to: "invoices#random"
       get 'invoices/:id/transactions', to: "invoices#transactions"
       get 'invoices/:id/invoice_items', to: "invoices#invoice_items"
       get 'invoices/:id/items', to: "invoices#items"
       get 'invoices/:id/customer', to: "invoices#customer"
       get 'invoices/:id/merchant', to: "invoices#merchant"
-      get 'invoices/find_all', to: "invoices#show"
-      get 'invoices/find', to: "invoices#find"
-      get 'invoices/random', to: "invoices#random"
       resources :invoices, except: [:new, :edit] do
       end
 
