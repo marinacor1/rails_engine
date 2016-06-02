@@ -22,4 +22,17 @@ class Api::V1::InvoicesControllerTest < ActionController::TestCase
     refute_equal "4",  parsed_json.first["quantity"]
     refute_equal "5", parsed_json.first["quantity"]
   end
+
+  test "it shows all invoice items" do
+    id = Invoice.last.id
+    get :items, id: id, format: :json
+    parsed_json = JSON.parse(response.body)
+    #TODO do i have any items that belong to this invoice
+
+    assert_response :success
+
+    assert parsed_json.count 2
+    assert_equal "Large shiny Tvs",  parsed_json.first["name"]
+    assert_equal "Large shiny Tvs",  parsed_json.last["name"]
+  end
 end

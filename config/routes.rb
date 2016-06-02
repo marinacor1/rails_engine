@@ -23,6 +23,7 @@ Rails.application.routes.draw do
 
       get 'invoices/:id/transactions', to: "invoices#transactions"
       get 'invoices/:id/invoice_items', to: "invoices#invoice_items"
+      get 'invoices/:id/items', to: "invoices#items"
       get 'invoices/find_all', to: "invoices#show"
       get 'invoices/find', to: "invoices#find"
       get 'invoices/random', to: "invoices#random"
