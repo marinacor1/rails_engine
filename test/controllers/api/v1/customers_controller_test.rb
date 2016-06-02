@@ -40,4 +40,13 @@ class Api::V1::CustomersControllerTest < ActionController::TestCase
     assert_equal "pending", parsed_json.first["result"]
     assert_equal "123456789",  parsed_json.first["credit_card_number"]
   end
+
+  test "it finds all possible customer matches in a query" do
+   last_name = Customer.last.last_name
+   get :find_all, last_name: last_name, format: :json
+   parsed_json = JSON.parse(response.body)
+
+   assert_equal 2, parsed_json.count
+  end
+
 end

@@ -19,7 +19,7 @@ class Api::V1::MerchantsControllerTest < ActionController::TestCase
     assert_equal Hash, parsed_json.class
   end
 
-  test "it finds all possible matches in a query" do
+  test "it finds all possible merchant matches in a query" do
    created_at = Merchant.last.created_at
    get :find_all, created_at: created_at, format: :json
    parsed_json = JSON.parse(response.body)
