@@ -36,9 +36,14 @@ module Api
         respond_with invoice.items
       end
 
-      def customers
+      def customer
         invoice = Invoice.find(params[:id])
         respond_with invoice.customer
+      end
+
+      def merchant
+        invoice = Invoice.find(params[:id])
+        respond_with invoice.merchant
       end
 
       private

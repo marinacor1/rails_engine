@@ -35,14 +35,23 @@ class Api::V1::InvoicesControllerTest < ActionController::TestCase
     assert_equal "Large shiny Tvs",  parsed_json.last["name"]
   end
 
-  test "it shows all customers for an invoice" do
+  test "it shows the customer for an invoice" do
     id = Invoice.last.id
-    get :customers, id: id, format: :json
+    get :customer, id: id, format: :json
     parsed_json = JSON.parse(response.body)
 
     assert_response :success
 
-    assert parsed_json.count 2
     assert_equal "Marina",  parsed_json["first_name"]
   end
+
+  test "it shows the merchant for an invoice" do
+    id = Invoice.last.id
+    get :merchant, id: id, format: :json
+    parsed_json = JSON.parse(response.body)
+
+    assert_response :success
+    assert_equal "Mrs.Merchant",  parsed_json["name"]
+  end
+
 end
