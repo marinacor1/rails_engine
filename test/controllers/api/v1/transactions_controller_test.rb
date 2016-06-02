@@ -7,7 +7,7 @@ class Api::V1::TransactionsControllerTest < ActionController::TestCase
     parsed_json = JSON.parse(response.body)
 
     assert_response :success
-    assert_equal id, parsed_json.first["customer_id"]
-    assert_equal "shipped",  parsed_json.first["status"]
-    assert_equal 281110143,  parsed_json.first["id"]
+    assert_equal 980190962, parsed_json["id"]
+    assert_equal "shipped",  parsed_json["status"]
   end
+end
