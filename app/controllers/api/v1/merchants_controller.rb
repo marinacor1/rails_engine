@@ -16,6 +16,10 @@ module Api
         respond_with Merchant.find_by(search_params)
       end
 
+      def find_all
+        respond_with Merchant.where(search_params).first
+      end
+
       def random
         random = rand(1..100)
         respond_with Merchant.find(random)
