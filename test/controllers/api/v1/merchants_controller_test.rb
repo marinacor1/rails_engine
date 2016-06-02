@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class Api::V1::MerchantsControllerTest < ActionController::TestCase
-  test "it shows all merchant items" do
+  test "it shows all merchants" do
     get :index, format: :json
     parsed_json = JSON.parse(response.body)
 
