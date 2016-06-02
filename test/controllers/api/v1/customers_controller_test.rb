@@ -54,6 +54,7 @@ class Api::V1::CustomersControllerTest < ActionController::TestCase
     get :favorite_merchant, id: id, format: :json
     parsed_json = JSON.parse(response.body)
     merchant = {"id"=>298486374, "name"=>"Mrs.Merchant"}
+    
     assert_equal merchant, parsed_json
   end
 
