@@ -27,12 +27,22 @@ class Api::V1::InvoicesControllerTest < ActionController::TestCase
     id = Invoice.last.id
     get :items, id: id, format: :json
     parsed_json = JSON.parse(response.body)
-    #TODO do i have any items that belong to this invoice
 
     assert_response :success
 
     assert parsed_json.count 2
     assert_equal "Large shiny Tvs",  parsed_json.first["name"]
     assert_equal "Large shiny Tvs",  parsed_json.last["name"]
+  end
+
+  test "it shows all customers for an invoice" do
+    id = Invoice.last.id
+    get :customers, id: id, format: :json
+    parsed_json = JSON.parse(response.body)
+
+    assert_response :success
+
+    assert parsed_json.count 2
+    assert_equal "Marina",  parsed_json["first_name"]
   end
 end

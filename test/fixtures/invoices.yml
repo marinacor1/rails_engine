@@ -1,21 +1,21 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  customer_id: 1
+  customer_id: 980190962
   merchant_id: 298486374
   status: shipped
 
 two:
-  customer_id: 4
+  customer_id: 980190962
   merchant_id: 298486374
   status: shipped
 
 three:
-  customer_id: 2
+  customer_id: 980190962
   merchant_id: 980190962
   status: shipped
 
 four:
-  customer_id: 3
+  customer_id: 298486374
   merchant_id: 980190962
   status: shipped

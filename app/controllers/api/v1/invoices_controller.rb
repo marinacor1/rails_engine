@@ -36,6 +36,11 @@ module Api
         respond_with invoice.items
       end
 
+      def customers
+        invoice = Invoice.find(params[:id])
+        respond_with invoice.customer
+      end
+
       private
 
       def search_params

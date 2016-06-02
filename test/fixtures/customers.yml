@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  first_name: Marina
+  last_name: Cordoba
+  
+two:
+  first_name: Lawrence
+  last_name: Hutchinson
