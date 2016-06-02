@@ -21,6 +21,11 @@ module Api
         respond_with InvoiceItem.find(random)
       end
 
+      def invoice
+        invoice_item = InvoiceItem.find(params[:id])
+        respond_with invoice_item.invoice
+      end
+
       private
 
       def search_params
