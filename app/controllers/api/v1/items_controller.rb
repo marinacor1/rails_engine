@@ -34,6 +34,11 @@ module Api
         item = Item.find(params[:id])
         respond_with item.merchant
       end
+
+      def best_day
+        item = Item.find(params[:id])
+        respond_with item.best_day
+      end
       private
 
       def item_params

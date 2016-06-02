@@ -47,4 +47,13 @@ class Api::V1::ItemsControllerTest < ActionController::TestCase
     assert_equal "Mr.Merchant", parsed_json["name"]
   end
 
+  test "it shows an items best day" do
+    id = Item.first.id
+    get :best_day, id: id, format: :json
+    parsed_json = JSON.parse(response.body)
+
+    assert_response :success
+    assert_equal "01-01", parsed_json
+  end
+
 end
