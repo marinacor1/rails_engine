@@ -20,6 +20,11 @@ module Api
         respond_with Customer.find(random)
       end
 
+      def invoices
+        customer = Customer.find(params[:id])
+        respond_with customer.invoices
+      end
+
       private
 
       def customer_params
