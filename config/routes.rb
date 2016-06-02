@@ -39,6 +39,7 @@ Rails.application.routes.draw do
       get 'transactions/find_all', to: "transactions#show"
       get 'transactions/find', to: "transactions#find"
       get 'transactions/random', to: "transactions#random"
+      get 'transactions/:id/invoice', to: "transactions#invoice"
       resources :transactions, except: [:new, :edit] do
       end
 
