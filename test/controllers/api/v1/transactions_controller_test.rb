@@ -25,7 +25,7 @@ class Api::V1::TransactionsControllerTest < ActionController::TestCase
 
     assert_response :success
     assert_equal 2, parsed_json.count
-    assert_equal array, parsed_json.class
+    assert_equal Array, parsed_json.class
   end
 
   test "it shows the invoice for a transaction" do

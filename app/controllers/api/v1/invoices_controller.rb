@@ -16,6 +16,10 @@ module Api
         respond_with Invoice.find_by(search_params)
       end
 
+      def find_all
+        respond_with Invoice.where(search_params)
+      end
+
       def random
         random = rand(1..100)
         respond_with Invoice.find(random)

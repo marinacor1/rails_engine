@@ -32,7 +32,7 @@ Rails.application.routes.draw do
       resources :items, only: [:index] do
       end
 
-      get 'invoices/find_all', to: "invoices#show"
+      get 'invoices/find_all', to: "invoices#find_all"
       get 'invoices/find', to: "invoices#find"
       get 'invoices/random', to: "invoices#random"
       get 'invoices/:id/transactions', to: "invoices#transactions"
