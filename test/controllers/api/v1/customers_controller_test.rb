@@ -41,6 +41,15 @@ class Api::V1::CustomersControllerTest < ActionController::TestCase
     assert_equal "123456789",  parsed_json.first["credit_card_number"]
   end
 
+  test "it finds first possible customer in a query" do
+   last_name = Customer.last.last_name
+   get :find, last_name: last_name, format: :json
+   parsed_json = JSON.parse(response.body)
+
+   assert_equal 3, parsed_json.count
+   assert_equal Hash, parsed_json.class
+  end
+
   test "it finds all possible customer matches in a query" do
    last_name = Customer.last.last_name
    get :find_all, last_name: last_name, format: :json
@@ -50,12 +59,11 @@ class Api::V1::CustomersControllerTest < ActionController::TestCase
   end
 
   test "it finds the favorite merchant for a customer" do
-    skip
     id = Customer.first.id
     get :favorite_merchant, id: id, format: :json
 
     parsed_json = JSON.parse(response.body)
-    merchant = {"id"=>298486374, "name"=>"Mrs.Merchant"}
+    merchant = {"id"=>980190962, "name"=>"Mr.Merchant"}
 
     assert_equal merchant, parsed_json
   end
