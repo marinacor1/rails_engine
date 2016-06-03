@@ -37,6 +37,14 @@ class Api::V1::TransactionsControllerTest < ActionController::TestCase
     assert_equal Hash, parsed_json.class
   end
 
+  test "it can find a random transaction" do
+    get :random, format: :json
+    random_parse = JSON.parse(response.body)
+
+    assert_response :success
+    
+  end
+
   test "it shows the invoice for a transaction" do
     id = Transaction.first.id
     get :invoice, id: id, format: :json
