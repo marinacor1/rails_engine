@@ -40,7 +40,7 @@ module Api
 
       def best_day
         item = Item.find(params[:id])
-        respond_with item.best_day
+        respond_with best_day: item.best_day
       end
 
       def most_revenue

@@ -1,17 +1,12 @@
 class Item < ActiveRecord::Base
   belongs_to :merchant
-  has_many :invoices, through: :invoice_items
   has_many :invoice_items
+  has_many :invoices, through: :invoice_items
 
   def best_day
-    # self.invoice_items.joins(:transactions).where()
-    # binding.pry
-    # #quantity matters
-    invoice_items.successful
-                 .group("invoices.created_at")
-                 .order("sum_quantity DESC")
-                 .sum("quantity")
-                 .first[0]
+  invoice_items.joins(:transactions).where("transactions.result = 'success'")
+      .order(quantity: :desc).take(2)
+      .first.invoice.created_at
   end
 
   def self.most_items(quantity)
