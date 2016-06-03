@@ -43,11 +43,13 @@ module Api
       end
 
       def most_items
-        respond_with Merchant.all
+        merchant = Merchant.find(params[:id])
+        respond_with merchant.most_items(params[:quantity])
       end
 
       def revenue
-        respond_with Merchant.all
+        merchant = Merchant.find(params[:id])
+        respond_with merchant.revenue
       end
 
       def single_revenue

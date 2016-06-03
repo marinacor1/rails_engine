@@ -26,12 +26,13 @@ Rails.application.routes.draw do
       resources :customers, only: [:index] do
       end
 
-      get 'items/find_all', to: "items#find_all"
       get 'items/find', to: "items#find"
+      get 'items/find_all', to: "items#find_all"
       get 'items/random', to: "items#random"
       get 'items/:id/invoice_items', to: "items#invoice_items"
       get 'items/:id/merchant', to: "items#merchant"
       get 'items/:id/best_day', to: "items#best_day"
+      get 'items/:id/most_items', to: "items#most_items"
       get 'items/:id', to: "items#show"
       resources :items, only: [:index] do
       end

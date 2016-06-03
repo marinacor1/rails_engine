@@ -32,7 +32,7 @@ class Api::V1::InvoiceItemsControllerTest < ActionController::TestCase
 
   test "it shows all invoice item by unit price" do
     price = InvoiceItem.last.unit_price
-    get :find_all, unit_price: price, format: :json
+    get :find_all, unit_price: "12.34", format: :json
     parsed_json = JSON.parse(response.body)
 
     assert_response :success

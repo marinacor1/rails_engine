@@ -11,4 +11,11 @@ class Item < ActiveRecord::Base
             .first
   end
 
+  def self.most_items(quantity)
+    limit(quantity)
+            .joins(:invoices)
+            .group(:id)
+            .order( 'sum(invoice_items.quantity) DESC')
+  end
+
 end

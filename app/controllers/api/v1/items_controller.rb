@@ -49,7 +49,7 @@ module Api
       end
 
       def most_items
-        respond_with Item.all
+        respond_with Item.most_item(params[:quantity])
       end
       private
 

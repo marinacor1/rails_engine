@@ -37,7 +37,7 @@ class Api::V1::CustomersControllerTest < ActionController::TestCase
     parsed_json = JSON.parse(response.body)
 
     assert_response :success
-    assert_equal "pending", parsed_json.first["result"]
+    assert_equal "failed", parsed_json.first["result"]
     assert_equal "123456789",  parsed_json.first["credit_card_number"]
   end
 

@@ -5,4 +5,6 @@ class Invoice < ActiveRecord::Base
   has_many :invoice_items
   has_many :items, through: :invoice_items
 
+  scope :successful, -> { joins(:transactions).merge(Transaction.successful)}
+
 end

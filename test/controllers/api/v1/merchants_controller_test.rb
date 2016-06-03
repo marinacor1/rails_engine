@@ -78,4 +78,14 @@ class Api::V1::MerchantsControllerTest < ActionController::TestCase
     assert_equal 1, parsed_json.count
     assert_equal "Cordoba", parsed_json.first['last_name']
   end
+
+  test "it gives the merchants total revenue" do
+    skip
+    id = Merchant.first.id
+    get :revenue, id: id, format: :json
+    parsed_json = JSON.parse(response.body)
+
+    assert_equal "", parsed_json
+  end
+
 end

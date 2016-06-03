@@ -20,7 +20,7 @@ class Api::V1::TransactionsControllerTest < ActionController::TestCase
   end
 
   test "it can show all instances of transaction by result" do
-    get :find_all, result: "shipped", format: :json
+    get :find_all, result: "success", format: :json
     parsed_json = JSON.parse(response.body)
 
     assert_response :success
