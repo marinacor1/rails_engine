@@ -4,6 +4,9 @@ class Item < ActiveRecord::Base
   has_many :invoice_items
 
   def best_day
+    # self.invoice_items.joins(:transactions).where()
+    # binding.pry
+    # #quantity matters
     invoice_items.successful
                  .group("invoices.created_at")
                  .order("sum_quantity DESC")
