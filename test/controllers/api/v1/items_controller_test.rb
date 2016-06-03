@@ -62,7 +62,8 @@ class Api::V1::ItemsControllerTest < ActionController::TestCase
     parsed_json = JSON.parse(response.body)
 
     assert_response :success
-    assert_equal "01-01", parsed_json
+    date = parsed_json["best_day"]
+    assert String, date.class
   end
 
   test "it shows most items by total sold" do

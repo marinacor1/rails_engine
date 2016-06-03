@@ -20,8 +20,7 @@ module Api
       end
 
       def random
-        random = rand(1..100)
-        respond_with Customer.find(random)
+        respond_with Customer.order("RANDOM()").first
       end
 
       def invoices

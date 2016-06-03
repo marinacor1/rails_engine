@@ -59,15 +59,6 @@ class Api::V1::MerchantsControllerTest < ActionController::TestCase
     assert_equal Hash, first_response.class
   end
 
-  test "it sorts merchants by revenue when quantity is given" do
-    skip
-    get :most_revenue, quantity: 2, format: :json
-    parsed_json = JSON.parse(response.body)
-
-    assert_equal 2, parsed_json.count
-    assert_equal "", parsed_json.first
-  end
-
   test "it gives favorite customer" do
     id = Merchant.first.id
     get :favorite_customer, id: id, format: :json
@@ -86,13 +77,5 @@ class Api::V1::MerchantsControllerTest < ActionController::TestCase
     assert_equal "Cordoba", parsed_json.first['last_name']
   end
 
-  test "it gives the merchants total revenue" do
-    skip
-    id = Merchant.first.id
-    get :revenue, id: id, format: :json
-    parsed_json = JSON.parse(response.body)
-
-    assert_equal "", parsed_json
-  end
 
 end

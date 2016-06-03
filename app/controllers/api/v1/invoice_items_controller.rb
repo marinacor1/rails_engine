@@ -21,8 +21,7 @@ module Api
       end
 
       def random
-        random = rand(1..100)
-        respond_with InvoiceItem.find(random)
+        respond_with Transaction.order("RANDOM()").first
       end
 
       def invoice
