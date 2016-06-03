@@ -20,12 +20,18 @@ class Merchant < ActiveRecord::Base
             .map(&:customer).uniq
   end
 
-  def revenue
-    invoices.joins(:transactions)
-             .joins(:invoice_items)
-             .where(transactions: {result: "success"})
-             .sum('invoice_items.quantity * invoice_items.unit_price')
-  end
+  # def self.revenue(date = nil)
+  #   if date.nil?
+  #     invoices.merge(Transaction.successful)
+  #                  .joins(:invoice_items)
+  #                  .sum('quantity * unit_price')
+  #   else
+  #     invoices.merge(Transaction.successful)
+  #                 .where(invoices: {created_at: date})
+  #                .joins(:invoice_items)
+  #                .sum('quantity * unit_price')
+  #    end
+  # end
 
   def self.most_items(quantity)
     limit(quantity)

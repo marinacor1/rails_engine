@@ -31,15 +31,7 @@ module Api
       end
 
       def most_revenue
-        quantity = params[:quantity]
-        Merchant.joins(:invoice)
-        respond_with Merchant.all
-        #Find all merchants and all invoices with status "shipped"
-        #Find all transactions within an invoice with result: "success"
-        #Find all invoice_items within an invoice, multiply the quantity and unit price
-        #Add up all the costs within an invoice for a merchant
-        #Add up all costs for all invoices for a merchant (revenue)
-        #Sort merchants by revenue
+        respond_with Merchant.most_revenue(params[:quantity])
       end
 
       def most_items
