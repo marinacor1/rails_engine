@@ -19,17 +19,6 @@ class Api::V1::InvoiceItemsControllerTest < ActionController::TestCase
     assert_equal Hash, parsed_json.class
   end
 
-  test "it shows the first invoice item by unit price" do
-    price = InvoiceItem.first.unit_price
-    get :find, unit_price: price, format: :json
-    parsed_json = JSON.parse(response.body)
-
-    assert_response :success
-    assert_equal 5, parsed_json.count
-    assert_equal "434.32", parsed_json["unit_price"]
-    assert_equal Hash, parsed_json.class
-  end
-
   test "it shows all invoice item by unit price" do
     price = InvoiceItem.last.unit_price
     get :find_all, unit_price: "12.34", format: :json

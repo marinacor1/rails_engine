@@ -44,11 +44,21 @@ class Api::V1::MerchantsControllerTest < ActionController::TestCase
   end
 
   test "it finds all possible merchant matches in a created at query" do
-   created = Merchant.last.created_at
-   get :find_all, created_at: created, format: :json
-   parsed_json = JSON.parse(response.body)
+    created = Merchant.last.created_at
+    get :find_all, created_at: created, format: :json
+    parsed_json = JSON.parse(response.body)
 
-   assert_equal 2, parsed_json.count
+    assert_equal 2, parsed_json.count
+  end
+
+  test "it finds a random merchant" do
+    get :random, format: :json
+    first_response = JSON.parse(response.body)
+
+    get :random, format: :json
+    second_response = JSON.parse(response.body)
+
+    refute first_response == second_response
   end
 
   test "it sorts merchants by revenue when quantity is given" do

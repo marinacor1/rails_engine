@@ -21,8 +21,7 @@ module Api
       end
 
       def random
-        random = rand(1..100)
-        respond_with Merchant.find(random)
+        respond_with Merchant.order("RANDOM()").first
       end
 
       def favorite_customer

@@ -20,16 +20,6 @@ class Api::V1::ItemsControllerTest < ActionController::TestCase
     assert_equal Hash, parsed_json.class
   end
 
-  test "it find first item by unit price" do
-    price = Item.first.unit_price
-    get :find, unit_price: price, format: :json
-    parsed_json = JSON.parse(response.body)
-
-    assert_response :success
-    assert_equal "2.32", parsed_json["unit_price"]
-    assert_equal Hash, parsed_json.class
-  end
-
   test "it shows all instances of items based on updated at" do
     updated_at = Item.first.updated_at
     get :find_all, updated_at: updated_at, format: :json
