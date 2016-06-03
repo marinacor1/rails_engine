@@ -20,6 +20,15 @@ class Api::V1::ItemsControllerTest < ActionController::TestCase
     assert_equal Hash, parsed_json.class
   end
 
+  test "it shows one instance of item based on id" do
+    id = Item.first.id
+    get :find, id: id, format: :json
+    parsed_json = JSON.parse(response.body)
+
+    assert_response :success
+    assert_equal id, parsed_json['id']
+  end
+
   test "it shows all instances of items based on updated at" do
     updated_at = Item.first.updated_at
     get :find_all, updated_at: updated_at, format: :json
