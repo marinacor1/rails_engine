@@ -25,8 +25,7 @@ module Api
       end
 
       def random
-        random = rand(1..100)
-        respond_with Item.find(random)
+        respond_with Merchant.order("RANDOM()").first
       end
 
       def invoice_items

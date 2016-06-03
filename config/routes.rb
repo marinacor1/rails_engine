@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   namespace :api, defaults: {format: :json} do
     namespace :v1 do
-      get '/merchants/most_revenue', to: "merchants#most_revenue"
+      # get '/merchants/most_revenue', to: "merchants#most_revenue"
       get '/merchants/most_items', to: "merchants#most_items"
       get '/merchants/find_all', to: "merchants#find_all"
       get '/merchants/find', to: "merchants#find"
@@ -11,7 +11,7 @@ Rails.application.routes.draw do
       get '/merchants/:id/favorite_customer', to: "merchants#favorite_customer"
       get '/merchants/:id/customers_with_pending_invoices', to: "merchants#pending_invoices"
       get '/merchants/:id/invoices', to: "merchant_invoices#index"
-      get 'merchants/revenue/', to: 'merchants#most_revenue'
+      # get 'merchants/revenue/', to: 'merchants#most_revenue'
       get '/merchants/:id/revenue', to: "merchants#revenue"
       get 'merchants/:id', to: "merchants#show"
       resources :merchants, only: [:index] do

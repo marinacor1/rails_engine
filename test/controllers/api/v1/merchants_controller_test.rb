@@ -55,10 +55,8 @@ class Api::V1::MerchantsControllerTest < ActionController::TestCase
     get :random, format: :json
     first_response = JSON.parse(response.body)
 
-    get :random, format: :json
-    second_response = JSON.parse(response.body)
-
-    refute first_response == second_response
+    assert_equal 2, first_response.count
+    assert_equal Hash, first_response.class
   end
 
   test "it sorts merchants by revenue when quantity is given" do
@@ -71,13 +69,12 @@ class Api::V1::MerchantsControllerTest < ActionController::TestCase
   end
 
   test "it gives favorite customer" do
-    skip
     id = Merchant.first.id
     get :favorite_customer, id: id, format: :json
     parsed_json = JSON.parse(response.body)
 
-    assert_equal 2, parsed_json.count
-    assert_equal "", parsed_json.first
+    assert_equal 3, parsed_json.count
+    assert_equal ["id", 980190962], parsed_json.first
   end
 
   test "it gives customers with pending invoices for single merchant" do
