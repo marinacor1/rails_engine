@@ -3,6 +3,7 @@ class Merchant < ActiveRecord::Base
   has_many :invoices
   has_many :customers, through: :invoices
   has_many :invoice_items, through: :invoices
+  has_many :transactions, through: :invoices
 
   def favorite_customer
     customers.select("customers.*, count(invoices.customer_id) AS invoice_number")
@@ -20,19 +21,10 @@ class Merchant < ActiveRecord::Base
   end
 
   def revenue
-    # invoices.joins()
-    #          .where(invoices: { created_at: date})
-    #          .joins(:invoice_items)
-    #          .sum('quantity * unit_price')
-                # .joins(transactions: :invoices)
-                # .merge(Transaction.successful).map(&:quantity)
-    # invoice_items.joins(transactions: :invoices)
-  # all_invoices = invoices.joins(:transactions)
-                        #  .merge(Transaction.successful)
-                        #  .joins(:invoice_items)
-    # all_invoices.inject(0) do |sum, num|
-    #   sum +=
-    # end
+    invoices.joins(:transactions)
+             .joins(:invoice_items)
+             .where(transactions: {result: "success"})
+             .sum('invoice_items.quantity * invoice_items.unit_price')
   end
 
   def most_items(quantity)
