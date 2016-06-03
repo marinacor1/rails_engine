@@ -4,7 +4,7 @@ class Item < ActiveRecord::Base
   has_many :invoices, through: :invoice_items
 
   def best_day
-    invoice_items.joins(:transactions).where("transactions.result = 'success'")
+    invoice_items.joins(:transactions).successful
                 .order(quantity: :desc).take(2)
                 .first.invoice.created_at
   end
