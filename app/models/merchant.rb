@@ -27,10 +27,10 @@ class Merchant < ActiveRecord::Base
              .sum('invoice_items.quantity * invoice_items.unit_price')
   end
 
-  def most_items(quantity)
+  def self.most_items(quantity)
     limit(quantity)
-            .joins(invoice_items: [Transactions, :invoice_items])
-            .where(transactions: { result: success})
+            .joins(invoices: [:transactions, :invoice_items])
+            .where(transactions: { result: 'success'})
             .group(:id)
             .order( 'sum(invoice_items.quantity) DESC')
   end
