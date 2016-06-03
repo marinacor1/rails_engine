@@ -68,7 +68,6 @@ class Api::V1::ItemsControllerTest < ActionController::TestCase
   end
 
   test "it shows an items best day" do
-    skip
     id = Item.first.id
     get :best_day, id: id, format: :json
     parsed_json = JSON.parse(response.body)

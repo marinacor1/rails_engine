@@ -32,7 +32,7 @@ class Api::V1::MerchantsControllerTest < ActionController::TestCase
    get :find_all, created_at: created_at, format: :json
    parsed_json = JSON.parse(response.body)
 
-   assert_equal "Mrs.Merchant", parsed_json["name"]
+   assert_equal "Mr.Merchant", parsed_json.first["name"]
   end
 
   test "it finds all possible merchant matches in a updated at query" do
@@ -61,12 +61,21 @@ class Api::V1::MerchantsControllerTest < ActionController::TestCase
   end
 
   test "it gives favorite customer" do
-    skip 
+    skip
     id = Merchant.first.id
     get :favorite_customer, id: id, format: :json
     parsed_json = JSON.parse(response.body)
 
     assert_equal 2, parsed_json.count
     assert_equal "", parsed_json.first
+  end
+
+  test "it gives customers with pending invoices for single merchant" do
+    id = Merchant.first.id
+    get :pending_invoices, id: id, format: :json
+    parsed_json = JSON.parse(response.body)
+
+    assert_equal 1, parsed_json.count
+    assert_equal "Cordoba", parsed_json.first['last_name']
   end
 end

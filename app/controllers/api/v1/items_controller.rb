@@ -13,11 +13,15 @@ module Api
       end
 
       def find
-        respond_with Item.find_by(item_params)
+          respond_with Item.find_by(item_params)
       end
 
       def find_all
-        respond_with Item.where(item_params)
+        if params['id']
+          respond_with Item.where(id: params[:id])
+        else
+          respond_with Item.where(item_params)
+        end
       end
 
       def random
@@ -38,6 +42,14 @@ module Api
       def best_day
         item = Item.find(params[:id])
         respond_with item.best_day
+      end
+
+      def most_revenue
+        respond_with Item.all
+      end
+
+      def most_items
+        respond_with Item.all
       end
       private
 

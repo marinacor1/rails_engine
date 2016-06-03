@@ -17,7 +17,7 @@ module Api
       end
 
       def find_all
-        respond_with Merchant.where(search_params).first
+        respond_with Merchant.where(search_params)
       end
 
       def random
@@ -33,12 +33,30 @@ module Api
       def most_revenue
         quantity = params[:quantity]
         Merchant.joins(:invoice)
+        respond_with Merchant.all
         #Find all merchants and all invoices with status "shipped"
         #Find all transactions within an invoice with result: "success"
         #Find all invoice_items within an invoice, multiply the quantity and unit price
         #Add up all the costs within an invoice for a merchant
         #Add up all costs for all invoices for a merchant (revenue)
         #Sort merchants by revenue
+      end
+
+      def most_items
+        respond_with Merchant.all
+      end
+
+      def revenue
+        respond_with Merchant.all
+      end
+
+      def single_revenue
+        respond_with Merchant.all.first
+      end
+
+      def pending_invoices
+        merchant = Merchant.find(params[:id])
+        respond_with merchant.pending_customers
       end
 
       private

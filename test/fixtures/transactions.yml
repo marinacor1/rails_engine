@@ -2,7 +2,7 @@
 one:
   invoice_id: 113629430
   credit_card_number: 123456789
-  result: pending
+  result: failed
 
 two:
   invoice_id: 113629430
@@ -13,7 +13,7 @@ two:
 three:
   invoice_id: 980190962
   credit_card_number: 12345678900
-  result: returned
+  result: failed
   credit_card_expiration_date: 018-06-01 15:45:43 -0600
 
 four:

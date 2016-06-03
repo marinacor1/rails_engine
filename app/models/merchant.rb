@@ -12,4 +12,10 @@ class Merchant < ActiveRecord::Base
              .first
   end
 
+  def pending_customers
+    customers.joins(invoices: :transactions)
+             .merge(Transaction.pending)
+             .group("customers.id")
+  end
+
 end
